@@ -11,51 +11,63 @@ public class ES {
 
     public String getInfo(Poly oPoly){
         String res = "Ce polygone est ";
-        historique.add(oPoly.getDescription());
+        Boolean dejaConnnu = false;
 
-        switch (oPoly.getSideCount()){
-
-            case Cfg.IS_TRIANGLE:
-
-                res += "un triangle";
-
-                if(isTriangleRectangle(oPoly)){
-
-                    if(isAllSidesEqual(oPoly)){
-
-                        res += " équilatéral rectangle";
-
-                    } else if(isTriangleIsocele(oPoly)) {
-
-                        res += " isocèle rectangle";
-                    }
-
-                } else if(isAllSidesEqual(oPoly)){
-
-                    res += "équilatéral";
+        if(historique.size() != 0) {
+            for(int i = 0; i < historique.size(); i = i + 2){
+                if(historique.get(i).equals(oPoly.getDescription())) {
+                    dejaConnnu = true;
+                    System.out.println("Polygon deja connu.");
+                    res = historique.get(i + 1);
                 }
+            }
+        }
 
-                break;
+        if(dejaConnnu == false) {
+            switch (oPoly.getSideCount()){
 
-            case Cfg.IS_QUADRILATERE:
+                case Cfg.IS_TRIANGLE:
 
-                res += "un quadrilatère";
+                    res += "un triangle";
 
-                int iCountRightAngle = oPoly.getiAngleDroit();
-                if(oPoly.getNbCoteEgaux() == 2){
+                    if(isTriangleRectangle(oPoly)){
+                        if(isAllSidesEqual(oPoly)){
+                            res += " équilatéral rectangle";
+                        } else if(isTriangleIsocele(oPoly)) {
+                            res += " isocèle rectangle";
+                        }
+                    } else if(oPoly.getNbCoteEgaux() == 3){
+                        res += " équilatéral";
+                    } else if(oPoly.getNbCoteEgaux() == 2) {
+                        res += " isocèle";
+                    } else if(oPoly.getiAngleDroit() == 0) {
+                        res += " quelconque";
+                    }
+                    break;
+
+                case Cfg.IS_QUADRILATERE:
+
+                    res += "un quadrilatère";
+
+                    int iCountRightAngle = oPoly.getiAngleDroit();
+                    if(oPoly.getNbCoteEgaux() == 2){
                         res += " de type rectangle";
                     } else if(oPoly.getNbCoteEgaux() == 4) {
                         res += " de type carré";
                     }
 
-                break;
+                    break;
 
-            default:
-                res += "un polygone à " + oPoly.getSideCount() + " côtés.";
-                break;
+                default:
+                    res += "un polygone à " + oPoly.getSideCount() + " côtés.";
+                    break;
 
+            }
         }
 
+
+        historique.add(oPoly.getDescription());
+        historique.add(res);
         return res;
     }
 
