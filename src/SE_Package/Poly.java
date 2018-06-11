@@ -13,6 +13,8 @@ public class Poly {
 
     private int iSideCount;
     private int iAngleCount;
+
+    private int tabMesure[];
     private int iAngleDroit;
 
     public Poly(){
@@ -35,6 +37,7 @@ public class Poly {
         this.iSideCount = _iSideCount;
         this.iAngleDroit = _iAngleDroit;
         this.iAngleCount = _iSideCount;
+        this.tabMesure = _tab;
 
 
         String tmpDesc = "";
@@ -52,15 +55,20 @@ public class Poly {
             this.aSides.add(new Side());
         }
 
+
+
         this.description.add("Le polygone construit a " + iSideCount + " cotes, dont " + iAngleDroit + " angle(s) droit.");
         tmpDesc = "Ses cote font : ";
 
         for(int i = 0; i < _tab.length; i++){
             this.aSides.add(new Side(_tab[i]));
-            tmpDesc = " " + _tab[i] + ",";
+
             if(i == _tab.length -1) {
                 tmpDesc += " " + _tab[i] + ".";
+            } else {
+                tmpDesc += " " + _tab[i] + ",";
             }
+
         }
 
         this.description.add(tmpDesc);
@@ -92,6 +100,18 @@ public class Poly {
     }
 
     public ArrayList<String> getDescription() { return description; }
+
+    public int getiSideCount() {
+        return iSideCount;
+    }
+
+    public int getiAngleDroit() {
+        return iAngleDroit;
+    }
+
+    public int[] getTabMesure() {
+        return tabMesure;
+    }
 
 
 }

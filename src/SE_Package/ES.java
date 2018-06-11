@@ -38,16 +38,16 @@ public class ES {
 
                 res += "un quadrilatère";
 
-                int iCountRightAngle = getCountRightAngle(oPoly);
+                int iCountRightAngle = oPoly.getiAngleDroit();
+                int tmpTab[] = oPoly.getTabMesure();
+                if(iCountRightAngle == 4) {
 
-                if(iCountRightAngle == 3){
-
-                    res += " de type rectangle";
-                } else if(iCountRightAngle == 4){
-
-                    res += " de type carré";
+                    if(tmpTab[0] == tmpTab[2] && tmpTab[1] == tmpTab[3]){
+                        res += " de type rectangle";
+                    } else if(tmpTab[0] == tmpTab[2] && tmpTab[1] == tmpTab[3] && tmpTab[2] == tmpTab[1]  ) {
+                        res += " de type carré";
+                    }
                 }
-
 
                 break;
 
