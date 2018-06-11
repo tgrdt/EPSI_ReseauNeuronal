@@ -50,12 +50,36 @@ public class ES {
                     res += "un quadrilatère";
 
                     int iCountRightAngle = oPoly.getiAngleDroit();
-                    if(oPoly.getNbCoteEgaux() == 2){
+                    if(oPoly.getNbCoteEgaux() == 2 && oPoly.getiAngleDroit() == 4){
                         res += " de type rectangle";
-                    } else if(oPoly.getNbCoteEgaux() == 4) {
+                    } else if(oPoly.getNbCoteEgaux() == 4 && oPoly.getiAngleDroit() == 4) {
                         res += " de type carré";
-                    }
+                    } else if(oPoly.isCoteParallele() == true) {
+                        if(oPoly.getNbParallele() == 2 && oPoly.getNbCoteEgaux() == 0) {
+                            res += " trapeze";
+                        } else if(oPoly.getNbParallele() == 4) {
+                            if(oPoly.getNbCoteEgaux() == 2 ) {
+                                res += " parallélogramme";
+                            } else if( oPoly.getNbCoteEgaux() == 4) {
+                                res += " losange";
+                            }
+                        }
+                    } else {
+                        res += " quelconque";
 
+                }
+                    break;
+                case Cfg.IS_PENTAGONE:
+                    res += "un pentagone";
+                    break;
+                case Cfg.IS_SEXTAGONE:
+                    res += " un sextagone";
+                    break;
+                case Cfg.IS_SEPTAGONE:
+                    res += " un septagone";
+                    break;
+                case Cfg.IS_OCTOGONE:
+                    res += " un octogone";
                     break;
 
                 default:

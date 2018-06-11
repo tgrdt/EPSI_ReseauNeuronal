@@ -15,6 +15,8 @@ public class Poly {
     private int iAngleCount;
     private int iAngleDroit;
     private int nbCoteEgaux;
+    private int nbParallele;
+    boolean coteParallele;
 
     public Poly(){
 
@@ -32,11 +34,13 @@ public class Poly {
 
     }
 
-    public Poly(int _iSideCount, int _iAngleDroit, int _nbCoteEgaux) {
+    public Poly(int _iSideCount, int _iAngleDroit, int _nbCoteEgaux, boolean parallele, int _nbParallele) {
         this.iSideCount = _iSideCount;
         this.iAngleDroit = _iAngleDroit;
         this.iAngleCount = _iSideCount;
         this.nbCoteEgaux = _nbCoteEgaux;
+        this.coteParallele = parallele;
+        this.nbParallele = _nbParallele;
 
         for(int i = 0; i < this.iAngleDroit; i++) {
             this.aAngles.add(new Angle(90));
@@ -51,7 +55,7 @@ public class Poly {
             this.aSides.add(new Side());
         }
 
-        this.description = ("Le polygone construit a " + iSideCount + " cotes, dont " + iAngleDroit + " angle(s) droit et " +
+        this.description = ("Le polygone construit a " + iSideCount + " cotes ( " + nbParallele + " parallele(s) ) " + iAngleDroit + " angle(s) droit et " +
                 this.nbCoteEgaux + " cote(s) egaux.");
 
 
@@ -93,6 +97,14 @@ public class Poly {
 
     public int getNbCoteEgaux() {
         return nbCoteEgaux;
+    }
+
+    public int getNbParallele() {
+        return nbParallele;
+    }
+
+    public boolean isCoteParallele() {
+        return coteParallele;
     }
 
 
