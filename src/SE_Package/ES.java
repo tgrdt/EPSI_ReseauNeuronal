@@ -7,8 +7,11 @@ import java.util.ArrayList;
 
 public class ES {
 
+    ArrayList<String> historique = new ArrayList<>();
+
     public String getInfo(Poly oPoly){
         String res = "Ce polygone est ";
+        historique.add(oPoly.getDescription());
 
         switch (oPoly.getSideCount()){
 
@@ -39,19 +42,13 @@ public class ES {
                 res += "un quadrilatère";
 
                 int iCountRightAngle = oPoly.getiAngleDroit();
-                int tmpTab[] = oPoly.getTabMesure();
-                if(iCountRightAngle == 4) {
-
-                    if(tmpTab[0] == tmpTab[2] && tmpTab[1] == tmpTab[3]){
+                if(oPoly.getNbCoteEgaux() == 2){
                         res += " de type rectangle";
-                    } else if(tmpTab[0] == tmpTab[2] && tmpTab[1] == tmpTab[3] && tmpTab[2] == tmpTab[1]  ) {
+                    } else if(oPoly.getNbCoteEgaux() == 4) {
                         res += " de type carré";
                     }
-                }
 
                 break;
-
-
 
             default:
                 res += "un polygone à " + oPoly.getSideCount() + " côtés.";

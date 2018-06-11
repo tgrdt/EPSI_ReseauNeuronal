@@ -9,13 +9,12 @@ public class Poly {
 
     private ArrayList<Side> aSides = new ArrayList<>();
     private ArrayList<Angle> aAngles = new ArrayList<>();
-    private ArrayList<String> description = new ArrayList<>();
+    private String description;
 
     private int iSideCount;
     private int iAngleCount;
-
-    private int tabMesure[];
     private int iAngleDroit;
+    private int nbCoteEgaux;
 
     public Poly(){
 
@@ -33,14 +32,11 @@ public class Poly {
 
     }
 
-    public Poly(int _iSideCount, int _iAngleDroit, int _tab[] ) {
+    public Poly(int _iSideCount, int _iAngleDroit, int _nbCoteEgaux) {
         this.iSideCount = _iSideCount;
         this.iAngleDroit = _iAngleDroit;
         this.iAngleCount = _iSideCount;
-        this.tabMesure = _tab;
-
-
-        String tmpDesc = "";
+        this.nbCoteEgaux = _nbCoteEgaux;
 
         for(int i = 0; i < this.iAngleDroit; i++) {
             this.aAngles.add(new Angle(90));
@@ -55,23 +51,9 @@ public class Poly {
             this.aSides.add(new Side());
         }
 
+        this.description = ("Le polygone construit a " + iSideCount + " cotes, dont " + iAngleDroit + " angle(s) droit et " +
+                this.nbCoteEgaux + " cote(s) egaux.");
 
-
-        this.description.add("Le polygone construit a " + iSideCount + " cotes, dont " + iAngleDroit + " angle(s) droit.");
-        tmpDesc = "Ses cote font : ";
-
-        for(int i = 0; i < _tab.length; i++){
-            this.aSides.add(new Side(_tab[i]));
-
-            if(i == _tab.length -1) {
-                tmpDesc += " " + _tab[i] + ".";
-            } else {
-                tmpDesc += " " + _tab[i] + ",";
-            }
-
-        }
-
-        this.description.add(tmpDesc);
 
     }
 
@@ -99,7 +81,7 @@ public class Poly {
         return iAngleCount;
     }
 
-    public ArrayList<String> getDescription() { return description; }
+    public String getDescription() { return description; }
 
     public int getiSideCount() {
         return iSideCount;
@@ -109,8 +91,8 @@ public class Poly {
         return iAngleDroit;
     }
 
-    public int[] getTabMesure() {
-        return tabMesure;
+    public int getNbCoteEgaux() {
+        return nbCoteEgaux;
     }
 
 
