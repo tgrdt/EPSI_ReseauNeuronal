@@ -34,9 +34,6 @@ public class Fenetre extends JFrame {
 
     public Fenetre() {
 
-        // Création du système expert
-        ES sysExpert = new ES();
-
         this.setTitle("Ma première fenêtre Java");
         this.setSize(400, 500);
         this.setLocationRelativeTo(null);
@@ -49,8 +46,6 @@ public class Fenetre extends JFrame {
         comboNbADroit.setPreferredSize(new Dimension(100, 20));
         comboNbParallele.setPreferredSize(new Dimension(100, 20));
         comboNbCoteEgaux.setPreferredSize(new Dimension(100, 20));
-
-        JPanel top = new JPanel();
 
         this.getContentPane().add(labelNbCote);
         this.getContentPane().add(comboNbCote);
@@ -68,13 +63,10 @@ public class Fenetre extends JFrame {
         comboNbCote = fillComboBox(8, comboNbCote);
         comboNbParallele = fillComboBox(8, comboNbParallele);
         comboNbADroit = fillComboBox(8, comboNbADroit);
-        //container.add(top, BorderLayout.NORTH);
-        //this.setContentPane(container);
 
         //On ajoute le bouton au content pane de la JFrame
         this.getContentPane().add(btnResultat);
         btnResultat.addActionListener(new BoutonListener());
-        //btnResultat.addActionListener(new BoutonListener());
         this.setVisible(true);
 
     }
@@ -108,7 +100,6 @@ public class Fenetre extends JFrame {
                 resBool.setText("Poygone déjà connu");
             }
 
-            //System.out.println(" Résultat = " + sysExpert.getInfo(poly));
         }
     }
 }

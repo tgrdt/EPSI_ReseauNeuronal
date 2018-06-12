@@ -1,6 +1,12 @@
 package SE_Package;
 
-import javax.swing.*;
+/********************************************
+ *                                          *
+ *         Projet de Système Expert         *
+ *   Maxime Rochard & Tiphaine Girardot     *
+ *                                          *
+ ********************************************/
+
 
 public class Main {
 

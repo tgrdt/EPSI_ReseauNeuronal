@@ -18,22 +18,6 @@ public class Poly {
     private int nbParallele;
     boolean coteParallele;
 
-    public Poly(){
-
-        this.iSideCount = Cfg.Rand.getRandomInt(3,5);
-
-        for(int i = 0; i < this.iSideCount; i++){
-            aSides.add(new Side());
-        }
-
-        this.iAngleCount = this.iSideCount;
-
-        for(int i = 0; i < this.iAngleCount; i++){
-            aAngles.add(new Angle());
-        }
-
-    }
-
     public Poly(int _iSideCount, int _iAngleDroit, int _nbCoteEgaux, boolean parallele, int _nbParallele) {
         this.iSideCount = _iSideCount;
         this.iAngleDroit = _iAngleDroit;
