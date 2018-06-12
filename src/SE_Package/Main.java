@@ -1,11 +1,14 @@
 package SE_Package;
 
+import javax.swing.*;
+
 public class Main {
 
     public static void main(String[] args) {
-        // Création du système expert
-        ES sysExpert = new ES();
 
+        Fenetre interfaceSE = new Fenetre();
+
+/*
         // Création des polygones
 
         // Triangle isocèle rectangle
@@ -87,7 +90,7 @@ public class Main {
         Poly poly16 = new Poly(8,0,8,false, 0);
         System.out.println(poly16.getDescription());
         System.out.println(" Résultat = " + sysExpert.getInfo(poly16));
-
+*/
 
 
     }

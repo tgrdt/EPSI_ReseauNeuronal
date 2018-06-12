@@ -7,18 +7,18 @@ import java.util.ArrayList;
 
 public class ES {
 
-    ArrayList<String> historique = new ArrayList<>();
+    //ArrayList<String> historique = new ArrayList<>();
 
-    public String getInfo(Poly oPoly){
+    public  ArrayList<String> getInfo(Poly oPoly, ArrayList<String> _historique){
         String res = "Ce polygone est ";
         Boolean dejaConnnu = false;
 
-        if(historique.size() != 0) {
-            for(int i = 0; i < historique.size(); i = i + 2){
-                if(historique.get(i).equals(oPoly.getDescription())) {
+        if(_historique.size() != 0) {
+            for(int i = 0; i < _historique.size(); i = i + 3){
+                if(_historique.get(i).equals(oPoly.getDescription())) {
                     dejaConnnu = true;
                     System.out.println("Polygon deja connu.");
-                    res = historique.get(i + 1);
+                    res = _historique.get(i + 1);
                 }
             }
         }
@@ -90,9 +90,14 @@ public class ES {
         }
 
 
-        historique.add(oPoly.getDescription());
-        historique.add(res);
-        return res;
+        _historique.add(oPoly.getDescription());
+        _historique.add(res);
+        if(dejaConnnu) {
+            _historique.add("Connu");
+        } else {
+            _historique.add("Non");
+        }
+        return _historique;
     }
 
     private boolean isTriangleRectangle(Poly oPoly){
